@@ -61,12 +61,19 @@
                 </ul>
             </div>
         </div>
+        <span style="position: absolute; bottom: 15px; right: 15px; color: rgba(255, 255, 255, .3); font-weight: 700; user-select: none;">В разработке ._.</span>
     </div>
     <div class="modal-login">
         <div class="modal-login-wrap">
             <h1 class="modal-login__title">Вход</h1>
             <input class="modal-login__input" title="Введите номер телефона" type="tel" placeholder="+7 999 999 99 99">
-            <input class="modal-login__input" title="Введите пароль" type="password" placeholder="Введите пароль">
+            <div class="password-flex">
+                <input class="modal-login__input" title="Введите пароль" type="password" placeholder="Введите пароль">
+                <div class="password-show"><svg class="btn-hov" width="22" height="11" viewBox="0 0 22 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.0006 1.00067C18.2536 4.57662 14.8779 6.99995 11 6.99995M11 6.99995C7.12204 6.99995 3.7463 4.57662 1.99977 1.00024M11 6.99995L11 9.99996M18.4218 3.42184L20.4999 5.49996M15.2304 5.9687L16.5 8.49995M3.57812 3.42184L1.5 5.49996M6.76953 5.96871L5.5 8.49996" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
             <input class="modal-login__btn btn-danger" type="button" value="Войти">
         </div>
     </div>

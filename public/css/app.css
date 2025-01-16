@@ -168,6 +168,7 @@ body {
 }
 .modal-catalog__categories {
   display: flex;
+  flex-wrap: wrap;
   gap: 50px;
 }
 .modal-catalog__categories-title {
@@ -217,10 +218,24 @@ body {
   flex-direction: column;
   gap: 20px;
 }
+.modal-login-wrap .password-flex {
+  position: relative;
+}
+.modal-login-wrap .password-show {
+  position: absolute;
+  right: -35px;
+  top: 50%;
+  transform: translateY(-50%);
+}
 .modal-login__input {
   border-radius: 10px;
   height: 40px;
-  padding: 0 5px;
+  padding: 0 10px;
+}
+.modal-login__error {
+  color: red;
+  font-size: 15px;
+  max-width: 100%;
 }
 .modal-login__btn {
   height: 40px;
@@ -593,7 +608,7 @@ body {
 }
 @media (max-width: 920px) {
   .main-section-cards {
-    max-width: 690px;
+    max-width: 692px;
   }
 }
 @media (max-width: 902px) {
@@ -655,3 +670,13 @@ body {
     width: 100%;
   }
 }
+@media (max-width: 692px) {
+  .main-section-cards {
+    max-width: 462px;
+  }
+}
+@media (max-width: 462px) {
+  .main-section-cards {
+    max-width: 232px;
+  }
+}/*# sourceMappingURL=style.css.map */

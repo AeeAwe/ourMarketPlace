@@ -115,6 +115,25 @@ passInput.addEventListener('input', e => {
     e.target.value = noSpacePls;
 })
 
+const showPass = document.querySelector('.password-show');
+showPass.addEventListener('click', () => {
+    if(document.querySelectorAll('.modal-login__input')[1].type == 'password'){
+        document.querySelectorAll('.modal-login__input')[1].type = 'text';
+        showPass.innerHTML = `<svg class="btn-hov" width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M21 8.0002C19.2531 11.5764 14.8775 15 10.9998 15C7.12201 15 2.74646 11.5764 1 7.99978" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M21 8.0002C19.2531 4.42398 14.8782 1 11.0005 1C7.1227 1 2.74646 4.42314 1 7.99978" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 8C14 9.65685 12.6569 11 11 11C9.34315 11 8 9.65685 8 8C8 6.34315 9.34315 5 11 5C12.6569 5 14 6.34315 14 8Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        `
+    }else{
+        document.querySelectorAll('.modal-login__input')[1].type = 'password';
+        showPass.innerHTML = `<svg class="btn-hov" width="22" height="11" viewBox="0 0 22 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.0006 1.00067C18.2536 4.57662 14.8779 6.99995 11 6.99995M11 6.99995C7.12204 6.99995 3.7463 4.57662 1.99977 1.00024M11 6.99995L11 9.99996M18.4218 3.42184L20.4999 5.49996M15.2304 5.9687L16.5 8.49995M3.57812 3.42184L1.5 5.49996M6.76953 5.96871L5.5 8.49996" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        `
+    }
+})
+
 const toggleCatalog = () =>{
     const catalogModal = document.querySelector('.modal-catalog');
     catalogModal.classList.toggle('show');
@@ -189,7 +208,7 @@ const displayProduct = () => {
     main.insertAdjacentHTML('afterbegin', `
         <div class="main-section-product">
             <div class="product-header">
-                <div class="product-img"><img src="{{asset('imgs/games/${storage[indexStoreObj].image}')}}" alt="${storage[indexStoreObj].name}"></div>
+                <div class="product-img"><img src="imgs/games/${storage[indexStoreObj].image}" alt="${storage[indexStoreObj].name}"></div>
                 <div class="product-title">
                     <h1 class="product-name">${storage[indexStoreObj].title}</h1>
                     <div class="product-cost">
@@ -206,13 +225,13 @@ const displayProduct = () => {
                     </div>
                     <div class="product-slider">
                         <div class="product-slider-track">
-                            <div class="product-slide"><img src="{{asset('imgs/no-game-here.png')}} alt="Game Screenshot 1"></div>
-                            <div class="product-slide"><img src="{{asset('imgs/no-game-here.png')}}" alt="Game Screenshot 2"></div>
-                            <div class="product-slide"><img src="{{asset('imgs/no-game-here.png')}}" alt="Game Screenshot 3"></div>
-                            <div class="product-slide"><img src="{{asset('imgs/no-game-here.png')}}" alt="Game Screenshot 4"></div>
+                            <div class="product-slide"><img src="imgs/no-game-here.png" alt="Game Screenshot 1"></div>
+                            <div class="product-slide"><img src="imgs/no-game-here.png" alt="Game Screenshot 2"></div>
+                            <div class="product-slide"><img src="imgs/no-game-here.png" alt="Game Screenshot 3"></div>
+                            <div class="product-slide"><img src="imgs/no-game-here.png" alt="Game Screenshot 4"></div>
                         </div>
-                        <div class="main-section-slider-prev slider-control"><img src="{{asset('icons/arrow-prev.svg')}}" alt="prv"></div>
-                        <div class="main-section-slider-next slider-control"><img src="{{asset('icons/arrow-next.svg')}}" alt="nxt"></div>
+                        <div class="main-section-slider-prev slider-control"><img src="icons/arrow-prev.svg" alt="prv"></div>
+                        <div class="main-section-slider-next slider-control"><img src="icons/arrow-next.svg" alt="nxt"></div>
                     </div>
                 </div>
             </div>
@@ -348,10 +367,10 @@ if (!window.location.pathname.includes('product.html')) {
                         </div>
                     </div>
                     <div class="cards-item__discount-decoration"><div class="cards-item__price-discount">${storage[i].discount ? storage[i].discount : '0'}%</div></div>
-                    <a href="/product?id=${storage[i].id}" class="cards-item__img">
-                        <img src="${baseImagePath}/${storage[i].image ? storage[i].image : '../no-game-here.png'}" alt="some-game-here">
+                    <a href="/product.html?id=${storage[i].id}" class="cards-item__img">
+                        <img src="imgs/games/${storage[i].image ? storage[i].image : '../no-game-here.png'}" alt="some-game-here">
                     </a>
-                    <a href="/product?id=${storage[i].id}" class="cards-item__title">${storage[i].title ? storage[i].title : 'NO Game'}</a>
+                    <a href="/product.html?id=${storage[i].id}" class="cards-item__title">${storage[i].title ? storage[i].title : 'NO Game'}</a>
                     <div class="cards-item__price">
                         <div class="cards-item__price-old">${storage[i].price ? storage[i].price : '0'}₽</div>
                         <div class="cards-item__price-current">${storage[i].discount ? Math.floor(storage[i].price - storage[i].price * (storage[i].discount/100)) : storage[i].price}₽</div>
@@ -386,9 +405,9 @@ if (!window.location.pathname.includes('product.html')) {
                     </div>
                     <div class="cards-item__discount-decoration"><div class="cards-item__price-discount">${gamesImgsBase[game] ? discountArr[randomDiscount] : '0'}%</div></div>
                     <a href="/product.html?id=${gamesImgsBase[game].id}" class="cards-item__img">
-                        <img src="${baseImagePath}/${gamesImgsBase[game].name ? gamesImgsBase[game].name : '../no-game-here.png'}" alt="some-game-here">
+                        <img src="imgs/games/${gamesImgsBase[game].name ? gamesImgsBase[game].name : '../no-game-here.png'}" alt="some-game-here">
                     </a>
-                    <a href="/product?id=${gamesImgsBase[game].id}" class="cards-item__title">${gamesImgsBase[game].name ? gamesImgsBase[game].name.replace(/_/g,' ').slice(0,-4) : 'NO Game'}</a>
+                    <a href="/product.html?id=${gamesImgsBase[game].id}" class="cards-item__title">${gamesImgsBase[game].name ? gamesImgsBase[game].name.replace(/_/g,' ').slice(0,-4) : 'NO Game'}</a>
                     <div class="cards-item__price">
                         <div class="cards-item__price-old">${gamesImgsBase[game].name ? currentArr[randomCost] : '0'}₽</div>
                         <div class="cards-item__price-current">${gamesImgsBase[game].name ? Math.floor(currentArr[randomCost] - currentArr[randomCost] * (discountArr[randomDiscount]/100)) : '0'}₽</div>
@@ -408,8 +427,10 @@ else{
 const auth = () => {
     const phone = phoneInput.value;
     const password = passInput.value;
+    const error = document.createElement('span');
+    error.classList.add('modal-login__error');
 
-    if (phone.length === 18 && password.length > 5) {
+    if (phone.length === 18 && password.length > 5 && password.length < 16) {
         const users = JSON.parse(ls.getItem('users')) || [];
 
         const existingUser = users.find(user => user.login === phone);
@@ -429,8 +450,16 @@ const auth = () => {
             alert("Вы успешно зарегистрировались и вошли!");
             location.reload();
         }
-    } else {
-        alert("Введите корректный номер телефона и пароль!");
+    }
+    if (phone.length !== 18) {
+        alert("Введите корректный номер телефона!");
+    } else if (password.length < 5){
+        if(document.querySelector('.modal-login__error')){
+            document.querySelector('.modal-login__error').textContent = 'Пароль слишком мал (не менее 5 символов)'
+        }else{
+            document.querySelector('.modal-login').insertAdjacentElement('beforeend', error)
+            document.querySelector('.modal-login__error').textContent = 'Пароль слишком мал (не менее 5 символов)'
+        } 
     }
 };
 
