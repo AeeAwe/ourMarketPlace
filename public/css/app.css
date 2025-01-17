@@ -228,13 +228,15 @@ body {
   transform: translateY(-50%);
 }
 .modal-login__input {
+  box-sizing: border-box;
+  width: 100%;
   border-radius: 10px;
   height: 40px;
   padding: 0 10px;
 }
 .modal-login__error {
   color: red;
-  font-size: 15px;
+  font-size: 12px;
   max-width: 100%;
 }
 .modal-login__btn {

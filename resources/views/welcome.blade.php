@@ -12,9 +12,6 @@
     <script defer src="{{ asset('js/app.js') }}"></script>
 </head>
 <body>
-    <script>
-        const baseImagePath = "{{ asset('imgs/games') }}";
-    </script>
     @include('partials.header')
     <main class="main-section">
         <div class="main-section-slider">

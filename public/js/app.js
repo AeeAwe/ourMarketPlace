@@ -295,7 +295,7 @@ if (!window.location.pathname.includes('product.html')) {
         images[currentIndex].classList.remove('active');
         setTimeout(() => {
             images[index].classList.add('active');
-        }, 600);
+        }, 500);
         currentIndex = index;
     }
 
@@ -430,7 +430,7 @@ const auth = () => {
     const error = document.createElement('span');
     error.classList.add('modal-login__error');
 
-    if (phone.length === 18 && password.length > 5 && password.length < 16) {
+    if (phone.length === 18 && password.length > 8 && password.length < 24) {
         const users = JSON.parse(ls.getItem('users')) || [];
 
         const existingUser = users.find(user => user.login === phone);
@@ -453,12 +453,19 @@ const auth = () => {
     }
     if (phone.length !== 18) {
         alert("Введите корректный номер телефона!");
-    } else if (password.length < 5){
+    } else if (password.length < 8){
         if(document.querySelector('.modal-login__error')){
-            document.querySelector('.modal-login__error').textContent = 'Пароль слишком мал (не менее 5 символов)'
+            document.querySelector('.modal-login__error').textContent = 'Пароль слишком мал (не менее 8 символов)'
         }else{
             document.querySelector('.modal-login').insertAdjacentElement('beforeend', error)
-            document.querySelector('.modal-login__error').textContent = 'Пароль слишком мал (не менее 5 символов)'
+            document.querySelector('.modal-login__error').textContent = 'Пароль слишком мал (не менее 8 символов)'
+        } 
+    } else if (password.length > 24){
+        if(document.querySelector('.modal-login__error')){
+            document.querySelector('.modal-login__error').textContent = 'Пароль слишком большой (не более 24 символов)'
+        }else{
+            document.querySelector('.modal-login').insertAdjacentElement('beforeend', error)
+            document.querySelector('.modal-login__error').textContent = 'Пароль слишком большой (не более 24 символов)'
         } 
     }
 };
